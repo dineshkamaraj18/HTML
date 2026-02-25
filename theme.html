@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pet Heaven Shop</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #1c10ff;
+  --secondary: #f97316;
+  --success: #10b981;
+  --dark: #0f172a;
+  --light: #f8fafc;
+  --gradient: linear-gradient(to right, red, blue);
+  --shadow: 0 10px 15px -3px rgba(66, 80, 172, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light);
+  color: #333;
+}
+.navbar {
+  background: var(--dark);
+  padding: 15px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.hero {
+  min-height: 90vh;
+  background: var(--gradient);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.hero button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.features-section {
+  padding: 80px 50px;
+  background: white;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--dark);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid #e2e8f0;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 1.8rem;
+}
+.pricing {
+  background: #f1f5f9;
+  padding: 80px 50px;
+  text-align: center;
+}
+
+.pricing-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  background: white;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: 0.3s;
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.popular {
+  border: 3px solid var(--primary);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: var(--secondary);
+  color: white;
+  padding: 5px 30px;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.add-to-cart {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.add-to-cart:hover {
+  background: var(--primary-dark);
+}
+.gallery {
+  padding: 80px 50px;
+  background: white;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.gallery-item {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: 0.4s;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  justify-content: flex-end;
+}
+
+.cart-content {
+  width: 400px;
+  height: 100%;
+  background: white;
+  padding: 30px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+}
+
+.cart-content.active {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.cart-total {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #0da271;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 40px 0;
+  color: #666;
+}
+
+/* REGISTER */
+.register {
+  background: var(--dark);
+  color: white;
+  padding: 80px 40px;
+}
+
+.register-form {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  color: #333;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-btn:hover {
+  background: var(--primary-dark);
+}
+/* FOOTER */
+footer {
+  background: #020617;
+  color: #cbd5f5;
+  text-align: center;
+  padding: 40px 25px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #cbd5f5;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .features-section, .pricing, .gallery, .register, .customer-details {
+    padding: 60px 20px;
+  }
+  
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cart-content {
+    width: 100%;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-paw me-2"></i>Pet Heaven Shop
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#pricing">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#register">Adopt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#customer-details">My Account</a>
+        </li>
+        <li class="nav-item cart-icon ms-3">
+          <a class="nav-link" href="#" id="openCart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <h1>Find Your Perfect Pet Companion</h1>
+  <p>Discover pets, supplies, and expert care all in one place. We help you find your new best friend and provide everything you need for a happy, healthy pet.</p>
+  <button onclick="document.querySelector('#pricing').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+  <h2 class="section-title">Our Premium Services</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <h3>Expert Pet Care</h3>
+      <p>Professional grooming, veterinary services, and wellness checkups to keep your pet healthy and happy.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <h3>Wide Variety</h3>
+      <p>Dogs, cats, birds, rabbits, and more. We have the perfect companion for every family.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-gem"></i>
+      </div>
+      <h3>Quality Supplies</h3>
+      <p>Premium food, accessories, toys, and habitats to ensure your pet's comfort and enjoyment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing">
+  <h1 class="section-title">Pricing Plans</h1>
+  <div class="pricing-container">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bird">
+      <div class="card-content">
+        <h3>Bird Adoption</h3>
+        <p>Beautiful and colorful birds with cages and starter kits included.</p>
+        <p class="price">₹499</p>
+        <button class="add-to-cart" data-name="Bird Adoption" data-price="499" data-image="https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="popular-badge">Popular</div>
+      <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cat">
+      <div class="card-content">
+        <h3>Cat Adoption</h3>
+        <p>Adorable cats and kittens with vaccination and starter kit included.</p>
+        <p class="price">₹999</p>
+        <button class="add-to-cart" data-name="Cat Adoption" data-price="999" data-image="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dog">
+      <div class="card-content">
+        <h3>Dog Adoption</h3>
+        <p>Loyal dogs and puppies with complete vaccination and training session.</p>
+        <p class="price">₹1999</p>
+        <button class="add-to-cart" data-name="Dog Adoption" data-price="1999" data-image="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery">
+  <h1 class="section-title">Pet Gallery</h1>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="dog.webp" alt="Pet">
+    </div>
+    <div class="gallery-item">
+      <img src="pet.webp" alt="Dog">
+    </div>
+    <div class="gallery-item">
+      <img src="sweater.webp" alt="Pet Supplies">
+    </div>
+  </div>
+</section>
+<!-- Registration/Adoption Form -->
+<section id="register" class="register">
+  <h1 class="section-title">Adopt a Pet</h1>
+  <div class="register-form">
+    <form id="adoptionForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" class="form-control" placeholder="Enter your complete address" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" class="form-control" placeholder="Enter your city" required>
+      </div>
+      <div class="form-group">
+        <label for="petType">Select Pet</label>
+        <select id="petType" class="form-control" required>
+          <option value="" disabled selected>Select a pet</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Bird">Bird</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contactPreference">Preferred Contact Method</label>
+        <select id="contactPreference" class="form-control">
+          <option value="Email" selected>Email</option>
+          <option value="Phone">Phone</option>
+          <option value="WhatsApp">WhatsApp</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Adopt Now</button>
+    </form>
+  </div>
+</section>
+
+<!-- Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-content" id="cartContent">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="close-cart" id="closeCart">&times;</button>
+    </div>
+    
+    <div id="cartItems">
+      <!-- Cart items will be dynamically added here -->
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+        <p>Your cart is empty</p>
+        <p>Add some pets to your cart!</p>
+      </div>
+    </div>
+    
+    <div id="cartSummary" style="display: none;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2023 Pet Heaven Shop. All rights reserved.</p>
+    <p>Find your perfect pet companion today!</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>

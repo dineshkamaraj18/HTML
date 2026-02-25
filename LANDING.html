@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop - Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, red, blue);
+            background: linear-gradient(to bottom left, red, blue);
+            color: white;
+            height: 100vh;
+        }
+
+        header {
+            height: 100vh;
+        }
+
+        .landing-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background: #a7abaf;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8a8b8b;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            p { font-size: 1.2em; }
+            .btn { font-size: 1em; padding: 12px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <section class="landing-page">
+        <h1>PET SHOP</h1>
+        <p>Paw Paradise</p>
+        
+        <div class="button">
+            <a href="pet.html">
+               <button class="btn" onclick="window.location.href='#shop'">
+            CLICK NOW
+        </button>
+            </a>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section id="shop" aria-label="Pet shop section">
+    </section>
+</main>
+</body>
+</html>
